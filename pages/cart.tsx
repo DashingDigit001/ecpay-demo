@@ -12,8 +12,8 @@ const Cart: NextPage = (props: any) => {
     return <div dangerouslySetInnerHTML={MyComponent(props.result.htm.toString())} />;
   } else if (router.query.cvs == "2") {
     let res = props.result;
-    console.log("props.result:", props.result.toString());
     console.log("props.result type:", typeof props.result);
+    // console.log("props.result:", props.result.toString());
 
     // let lockedData = "uvI4yrErM37XNQkXGAgRgJAgHn2t72jahaMZzYhWL1HmvH4WV18VJDP2i9pTbC+tby5nxVExLLFyAkbjbS2Dvg==";
 
