@@ -16,7 +16,7 @@ function MyComponent(html) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const result = await (await fetch("http://localhost:3000/api/createOrder")).json();
+  const result = await (await fetch("https://ecpay-demo.vercel.app/api/createOrder")).json();
   console.log(result);
 
   // Pass data to the page via props

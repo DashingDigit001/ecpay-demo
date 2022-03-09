@@ -12,7 +12,7 @@ const Cart: NextPage = (props: any) => {
     <div className="container">
       <button
         onClick={async () => {
-          location.href = "http://localhost:3000/cart?cvs=1";
+          location.href = "https://ecpay-demo.vercel.app/cart?cvs=1";
           // router.p
         }}
       >
@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
   console.log(context.req);
   console.log("===============================context===============================");
   // Fetch data from external API
-  const result = await (await fetch("http://localhost:3000/api/map")).json();
+  const result = await (await fetch("https://ecpay-demo.vercel.app/api/map")).json();
   // console.log(result);
 
   // Pass data to the page via props
