@@ -7,5 +7,9 @@ type Data = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   console.log("hello test vercel");
+
+  console.log("========================================================================================");
+  console.log(req.body);
+  console.log("========================================================================================");
   res.status(200).json({ name: "John Doe" });
 }
