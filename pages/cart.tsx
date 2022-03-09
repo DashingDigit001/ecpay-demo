@@ -7,7 +7,10 @@ const Cart: NextPage = (props: any) => {
   const router = useRouter();
   if (router.query.cvs == "1") {
     return <div dangerouslySetInnerHTML={MyComponent(props.result.htm.toString())} />;
+  } else if (router.query.cvs == "2") {
+    console.log(props.result);
   }
+
   return (
     <div className="container">
       <button
@@ -45,11 +48,11 @@ export async function getServerSideProps(context) {
     });
 
     const result = await streamPromise;
-    console.log(result);
+    return { props: { result } };
+  } else {
+    const result = await (await fetch("https://ecpay-demo.vercel.app/api/map")).json();
+    return { props: { result } };
   }
-  const result = await (await fetch("https://ecpay-demo.vercel.app/api/map")).json();
-
-  return { props: { result } };
 }
 
 export default Cart;
