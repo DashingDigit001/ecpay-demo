@@ -3,9 +3,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req, res: NextApiResponse) {
   console.log("hello temp");
-  // console.log("========================================================================================");
-  // console.log(req);
-  // console.log("========================================================================================");
+  console.log("========================================================================================");
+  console.log(req.body);
+  console.log("========================================================================================");
   res.send({
     htm: "success",
   });
