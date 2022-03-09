@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
+import { parse } from "querystring";
 const Cart: NextPage = (props: any) => {
   const [result, setResult] = useState("");
   const router = useRouter();
@@ -28,14 +28,27 @@ function MyComponent(html) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  console.log("===============================context===============================");
-  console.log(context.req);
-  console.log("===============================context===============================");
-  // Fetch data from external API
-  const result = await (await fetch("https://ecpay-demo.vercel.app/api/map")).json();
-  // console.log(result);
+  console.log(context.query);
+  if (context.query.cvs == 2) {
+    const streamPromise = new Promise((resolve, reject) => {
+      let postBody = "";
 
-  // Pass data to the page via props
+      context.req.on("data", (data) => {
+        // convert Buffer to string
+        postBody += data.toString();
+      });
+
+      context.req.on("end", () => {
+        const postData = parse(postBody);
+        resolve(postData);
+      });
+    });
+
+    const result = await streamPromise;
+    console.log(result);
+  }
+  const result = await (await fetch("https://ecpay-demo.vercel.app/api/map")).json();
+
   return { props: { result } };
 }
 
