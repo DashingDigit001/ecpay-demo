@@ -14,7 +14,7 @@ export default async function handler(req, res: NextApiResponse) {
     SenderZipCode: "123",
     SenderAddress: "xxxxxxxx",
     Remark: "xxx",
-    ServerReplyURL: "https://ecpay-demo.vercel.app/api/setTempLogisticsReply",
+    ServerReplyURL: "https://ecpay-demo.vercel.app/api/hello",
     ClientReplyURL: "https://ecpay-demo.vercel.app/api/setTempLogisticsReply",
     Temperature: "0001",
     Specification: "0001",
