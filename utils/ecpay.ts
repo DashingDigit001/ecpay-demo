@@ -3,7 +3,7 @@ import urlencode from "urlencode";
 import { parse, ParsedUrlQuery } from "querystring";
 
 var ecpay = {
-  aesEncode: (key: string, iv: string, orderData: string) => {
+  aesEncode: (key: string, iv: string, orderData: any) => {
     const encoded = urlencode(JSON.stringify(orderData));
 
     var _key = CryptoJS.enc.Utf8.parse(key);
