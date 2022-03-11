@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
   switch (context.query.from) {
     case "ecpay":
       let res: any = await ecpay.getFormData(context);
+      result = JSON.parse(res);
       console.log(res);
 
       break;
