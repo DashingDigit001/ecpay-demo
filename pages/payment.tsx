@@ -6,9 +6,6 @@ const Payment: NextPage = (props: any) => {
   // console.log("props.order:", props.order);
   // let order = props.result.order ?? {};
   console.log("props.result: ", props.result);
-  console.log("===========================================================");
-  console.log("props.result: JSON.stringify", JSON.parse(props.result));
-  console.log("===========================================================");
 
   return (
     <div className="container">
