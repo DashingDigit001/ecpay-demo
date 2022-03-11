@@ -25,6 +25,8 @@ const Payment: NextPage = (props: any) => {
 
 export async function getServerSideProps(context) {
   let result: any = {};
+
+  console.log(context.resolvedUrl);
   switch (context.query.from) {
     case "ecpay":
       let res: any = await ecpay.getFormData(context);

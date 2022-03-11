@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import { useRef, useEffect } from "react";
-import { withRouter } from "next/router";
 
 const Redirect: NextPage = (props: any) => {
-  // console.log(props.result.htm);
+  console.log(props.result.htm);
 
   const myEl = useRef(null);
   useEffect(() => {
@@ -20,21 +19,19 @@ const Redirect: NextPage = (props: any) => {
 // This gets called on every request
 export async function getServerSideProps(context) {
   let result = {};
-
+  console.log(process.env.API_URL);
   switch (context.query.value) {
     case "map":
-      result = await (await fetch("http://localhost:3000/api/map")).json();
+      result = await (await fetch(`${process.env.API_URL}/api/map`)).json();
       break;
     case "formalOrder":
-      result = await (await fetch("http://localhost:3000/api/formalOrder")).json();
+      result = await (await fetch(`${process.env.API_URL}/api/formalOrder`)).json();
 
       break;
     case "payment":
-      result = await (await fetch("http://localhost:3000/api/payment")).json();
+      result = await (await fetch(`${process.env.API_URL}/api/payment`)).json();
       break;
   }
-
-  // const result = await (await fetch("http://localhost:3000/api/map")).json();
 
   return { props: { result } };
 }
