@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import ecpay from "../utils/ecpay";
-const PaymentDone: NextPage = (props: any) => {
+const PaymentDoneClient: NextPage = (props: any) => {
   const router = useRouter();
   // console.log("props.order:", props.order);
   // let order = props.result.order ?? {};
@@ -31,4 +31,4 @@ export async function getServerSideProps(context) {
   return { props: { result } };
 }
 
-export default PaymentDone;
+export default PaymentDoneClient;

@@ -39,9 +39,9 @@ export default function handler(req, res: NextApiResponse) {
     TotalAmount: "100",
     TradeDesc: "測試交易描述",
     ItemName: "測試商品等",
-    // ReturnURL: "https://ecpay-demo.vercel.app/payment?from=ecpay",
+    ReturnURL: `${process.env.API_URL}/PaymentDoneServer`,
     // ClientBackURL: "https://ecpay-demo.vercel.app/payment?from=ecpay",
-    OrderResultURL: `${process.env.API_URL}/paymentDone?from=ecpay`,
+    OrderResultURL: `${process.env.API_URL}/PaymentDoneClient?from=ecpay`,
   };
   console.log(time, no, date);
   const options = {
