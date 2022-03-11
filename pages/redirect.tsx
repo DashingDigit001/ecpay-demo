@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useRef, useEffect } from "react";
 
 const Redirect: NextPage = (props: any) => {
-  console.log(props.result.htm);
+  // console.log(props.result.htm);
 
   const myEl = useRef(null);
   useEffect(() => {
