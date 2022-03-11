@@ -7,7 +7,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="container">
-      <button>1157</button>
+      <button>1600</button>
       <button></button>
     </div>
   );

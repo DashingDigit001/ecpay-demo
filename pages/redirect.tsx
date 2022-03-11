@@ -24,12 +24,12 @@ export async function getServerSideProps(context) {
     case "map":
       result = await (await fetch(`${process.env.API_URL}/api/map`)).json();
       break;
-    case "formalOrder":
-      result = await (await fetch(`${process.env.API_URL}/api/formalOrder`)).json();
 
-      break;
     case "payment":
       result = await (await fetch(`${process.env.API_URL}/api/payment`)).json();
+      break;
+    case "consignmentNote":
+      result = await (await fetch(`${process.env.API_URL}/api/getConsignmentNote`)).json();
       break;
   }
 

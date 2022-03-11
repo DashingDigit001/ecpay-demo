@@ -1,4 +1,3 @@
-import ecpay_logistics from "ecpay_logistics_nodejs/lib/ecpay_logistics.js";
 import { NextApiRequest, NextApiResponse } from "next";
 import urlencode from "urlencode";
 
@@ -8,7 +7,8 @@ export default async function handler(req, res: NextApiResponse) {
   //送出正是訂單前，先把暫存訂單資料解密，TempLogisticsID
 
   var temp = {
-    TempLogisticsID: "8462",
+    MerchantID: "2000933",
+    LogisticsID: "1888028",
   };
   const encoded = urlencode(JSON.stringify(temp));
 
@@ -16,10 +16,7 @@ export default async function handler(req, res: NextApiResponse) {
   let iv = "h1ONHk4P4yqbl5LK"; // 偏移量：必須16個字元
   let encrypted = ecpay.aesEncode(key, iv, temp);
 
-  console.log("================================encrypted================================");
-  console.log(encrypted);
-  console.log("================================encrypted================================");
-  const response = await fetch("https://logistics-stage.ecpay.com.tw/Express/v2/CreateByTempTrade", {
+  const response = await fetch("https://logistics-stage.ecpay.com.tw/Express/v2/QueryLogisticsTradeInfo", {
     method: "POST",
     body: JSON.stringify({
       MerchantID: "2000933",
@@ -35,6 +32,6 @@ export default async function handler(req, res: NextApiResponse) {
   });
 
   res.send({
-    htm: await response.text(),
+    htm: ecpay.aesDecode(key, iv, JSON.parse(await response.text()).Data),
   });
 }

@@ -12,11 +12,7 @@ const SendOrder: NextPage = (props: any) => {
   };
 
   switch (router.query.cvs) {
-    case "3":
-      return <div dangerouslySetInnerHTML={MyComponent(props.result.htm.toString())} />;
     case "1":
-      // return <div dangerouslySetInnerHTML={MyComponent(props.result.htm.toString())} />;
-
       let resultData = JSON.parse(props.result.htm);
       console.log(resultData);
       let lockedData = resultData.Data;
@@ -28,18 +24,14 @@ const SendOrder: NextPage = (props: any) => {
       console.log("order:", order);
       return (
         <div className="container">
-          {/* <div>超商門市:{order.ReceiverStoreName}</div>
-          <div>超商門市:{order.TempLogisticsID}</div> */}
-
           <button
             onClick={async () => {
               location.href = "/sendOrder?cvs=1";
-              // router.p
             }}
           >
-            選擇門市
+            建立正式訂單
           </button>
-          <div></div>
+          <div>LogisticsID:{order.LogisticsID}</div>
         </div>
       );
     default:
