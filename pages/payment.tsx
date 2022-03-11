@@ -7,7 +7,7 @@ const Payment: NextPage = (props: any) => {
   // let order = props.result.order ?? {};
   console.log("props.result: ", props.result);
   console.log("===========================================================");
-  console.log("props.result: JSON.stringify", JSON.stringify(props.result));
+  console.log("props.result: JSON.stringify", JSON.parse(props.result));
   console.log("===========================================================");
 
   return (
@@ -36,7 +36,7 @@ export async function getServerSideProps(context) {
       let res: any = await ecpay.getFormData(context);
       console.log(res);
       console.log("res.CheckMacValue:", res.CheckMacValue);
-      result = res;
+      result = JSON.stringify(res);
       break;
     default:
       break;
