@@ -5,6 +5,8 @@ import urlencode from "urlencode";
 import ecpay from "../../utils/ecpay";
 
 export default async function handler(req, res: NextApiResponse) {
+  //送出正是訂單前，先把暫存訂單資料解密，TempLogisticsID
+
   var temp = {
     TempLogisticsID: "8418",
   };

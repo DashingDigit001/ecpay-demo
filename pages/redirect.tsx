@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
 
       break;
     case "payment":
-      result = await (await fetch("https://ecpay-demo.vercel.app/api/createOrder")).json();
+      result = await (await fetch("http://localhost:3000/api/payment")).json();
       break;
   }
 

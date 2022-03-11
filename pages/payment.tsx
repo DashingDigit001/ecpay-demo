@@ -1,0 +1,41 @@
+import type { NextPage } from "next";
+import { useRouter } from "next/router";
+import ecpay from "../utils/ecpay";
+const Payment: NextPage = (props: any) => {
+  const router = useRouter();
+  // console.log("props.order:", props.order);
+  // let order = props.result.order ?? {};
+
+  return (
+    <div className="container">
+      <button
+        onClick={async () => {
+          router.push({
+            pathname: "/redirect",
+            query: { value: "payment" },
+          });
+          // router.p
+        }}
+      >
+        前往付款
+      </button>
+    </div>
+  );
+};
+
+export async function getServerSideProps(context) {
+  let result: any = {};
+  switch (context.query.from) {
+    case "ecpay":
+      let res: any = await ecpay.getFormData(context);
+      console.log(res);
+
+      break;
+    default:
+      break;
+  }
+
+  return { props: { result } };
+}
+
+export default Payment;
