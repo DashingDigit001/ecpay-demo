@@ -1,7 +1,6 @@
 import ecpay_payment from "ecpay_aio_nodejs/lib/ecpay_payment.js";
 import { NextApiRequest, NextApiResponse } from "next";
 import moment from "moment";
-// const html = require("./form.txt");
 
 export default function handler(req, res: NextApiResponse) {
   // 若要測試開立電子發票，請將inv_params內的"所有"參數取消註解 //
@@ -63,7 +62,6 @@ export default function handler(req, res: NextApiResponse) {
   };
   var create = new ecpay_payment(options);
   var htm = create.payment_client.aio_check_out_credit_onetime(base_param, inv_params);
-  console.log("htm:", htm);
   res.send({
     htm: htm.toString(),
   });

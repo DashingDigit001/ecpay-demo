@@ -3,9 +3,6 @@ import { useRouter } from "next/router";
 import ecpay from "../utils/ecpay";
 const Payment: NextPage = (props: any) => {
   const router = useRouter();
-  // console.log("props.order:", props.order);
-  // let order = props.result.order ?? {};
-  console.log("props.result: ", props.result);
 
   return (
     <div className="container">
@@ -15,7 +12,6 @@ const Payment: NextPage = (props: any) => {
             pathname: "/redirect",
             query: { value: "payment" },
           });
-          // router.p
         }}
       >
         前往付款
@@ -31,8 +27,6 @@ export async function getServerSideProps(context) {
   switch (context.query.from) {
     case "ecpay":
       let res: any = await ecpay.getFormData(context);
-      console.log(res);
-      console.log("res.CheckMacValue:", res.CheckMacValue);
       result = JSON.stringify(res);
       break;
     default:

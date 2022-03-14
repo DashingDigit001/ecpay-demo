@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { parse, ParsedUrlQuery } from "querystring";
 import ecpay from "../utils/ecpay";
 const Cart: NextPage = (props: any) => {
   const router = useRouter();
-  // console.log("props.order:", props.order);
   let order = props.result.order ?? {};
-
-  console.log("order:", order);
   return (
     <div className="container">
       <button
@@ -17,7 +12,6 @@ const Cart: NextPage = (props: any) => {
             pathname: "/redirect",
             query: { value: "map" },
           });
-          // router.p
         }}
       >
         選擇門市
@@ -37,8 +31,8 @@ export async function getServerSideProps(context) {
       let lockedData = resultData.Data;
       let key = "XBERn1YOvpM9nfZc";
       let iv = "h1ONHk4P4yqbl5LK";
-      let order = ecpay.aesDecode(key, iv, lockedData);
-      result["order"] = order;
+
+      result["order"] = ecpay.aesDecode(key, iv, lockedData);
       break;
     default:
       break;

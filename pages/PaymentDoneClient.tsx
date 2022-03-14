@@ -5,7 +5,6 @@ const PaymentDoneClient: NextPage = (props: any) => {
   const router = useRouter();
   // console.log("props.order:", props.order);
   // let order = props.result.order ?? {};
-  console.log("props.result: ", props.result);
 
   return (
     <div className="container">

@@ -3,9 +3,6 @@ import { useRouter } from "next/router";
 import ecpay from "../utils/ecpay";
 const ConsignmentNote: NextPage = (props: any) => {
   const router = useRouter();
-  // console.log("props.order:", props.order);
-  // let order = props.result.order ?? {};
-  console.log("props.result: ", props.result);
 
   return (
     <div className="container">
@@ -15,7 +12,6 @@ const ConsignmentNote: NextPage = (props: any) => {
             pathname: "/redirect",
             query: { value: "consignmentNote" },
           });
-          // router.p
         }}
       >
         列印託運單
@@ -31,7 +27,6 @@ export async function getServerSideProps(context) {
   switch (context.query.from) {
     case "consignmentNote":
       let res: any = await ecpay.getFormData(context);
-      console.log(res);
       result = JSON.stringify(res);
       break;
     default:

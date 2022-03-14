@@ -40,7 +40,6 @@ const SendOrder: NextPage = (props: any) => {
           <button
             onClick={async () => {
               location.href = "/sendOrder?cvs=1";
-              // router.p
             }}
           >
             送出訂單
@@ -53,8 +52,6 @@ const SendOrder: NextPage = (props: any) => {
 function MyComponent(html) {
   return { __html: html };
 }
-
-// This gets called on every request
 export async function getServerSideProps(context) {
   console.log(typeof context.query.cvs);
   var result;
